@@ -63,10 +63,7 @@ public class Run {
                         System.out.println("Danh sách sau khi làm rỗng :");
                         danhSachSinhVien.lamRongDanhSach();
                     }
-                    case 6 -> {
-                        danhSachSinhVien.kiemTraSinhVienCoTrongDanhSach();
-                        danhSachSinhVien.show();
-                    }
+                    case 6 -> danhSachSinhVien.kiemTraSinhVienCoTrongDanhSach();
                     case 7 -> danhSachSinhVien.xoaSinhVienKhoiDanhSach();
                     case 8 -> danhSachSinhVien.timSinhVienTheoTen();
                     case 9 -> {

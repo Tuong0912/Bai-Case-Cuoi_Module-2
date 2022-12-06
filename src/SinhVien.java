@@ -1,6 +1,8 @@
 //import java.util.Objects;
 
-public class SinhVien implements Comparable<SinhVien>{
+import java.io.Serializable;
+
+public class SinhVien implements Comparable<SinhVien>, Serializable {
     private String maSinhVien;
     private String hoVaTen;
     private int namSinh;

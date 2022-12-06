@@ -19,10 +19,9 @@ public class Quanlytk {
         if (quanlytk.containsKey(name)) {
             if (quanlytk.get(name).equals(password)) {
                 System.out.println("Đăng nhặp thành công");
-                new Run().QuanLy(); //////////********\\\\\\\\\/
+                new Run().QuanLy(); //////////********\\\\\\\\\\
             } else {
                 System.out.println("Nhập lại mật khẩu");
-                scanner.nextLine();
                 String password1 = scanner.nextLine();
                 if (quanlytk.get(name).equals(password1)) {
                     System.out.println("Đăng nhập thành công");

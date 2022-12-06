@@ -1,20 +1,27 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
 
-public class DanhSachSinhVien {
+public class DanhSachSinhVien implements Serializable {
     Scanner scanner = new Scanner(System.in);
     private ArrayList<SinhVien> danhSach = new ArrayList<>();
+
+    private final WriteAndRead writeAndRead;
+
 
 
     public DanhSachSinhVien() {
         this.danhSach = new ArrayList<SinhVien>();
+        writeAndRead = new WriteAndRead();
+        danhSach = writeAndRead.read();
     }
 
-    public DanhSachSinhVien(ArrayList<SinhVien> danhSach) {
+    public DanhSachSinhVien(ArrayList<SinhVien> danhSach, WriteAndRead writeAndRead) {
         this.danhSach = danhSach;
+        this.writeAndRead = writeAndRead;
     }
 
     public void themSinhVien(SinhVien sv) {
@@ -36,6 +43,7 @@ public class DanhSachSinhVien {
 
         SinhVien sv = new SinhVien(maSinhVien, hoVaTen, namSinh, diemTrungBinh);
         danhSach.add(sv);
+        writeAndRead.write(danhSach);
     }
 
     public void show() {
@@ -102,18 +110,17 @@ public class DanhSachSinhVien {
         this.danhSach.set(index, sv1);
     }
 
-    //
     public void lamRongDanhSach() {
         this.danhSach.clear();
     }
 
-    public boolean kiemTraTonTai(SinhVien sv) {
+    public String kiemTraTonTai(SinhVien sv) {
         for (int i = 0; i < danhSach.size(); i++) {
             if (danhSach.get(i).getMaSinhVien().equals(sv.getMaSinhVien())) {
-                return true;
+                return danhSach.get(i).toString();
             }
         }
-        return false;
+        return "Không có sinh viên đấy trong danh sách" ;
     }
 
     public void xoaSinhVienKhoiDanhSach() {
@@ -122,6 +129,7 @@ public class DanhSachSinhVien {
         SinhVien sv = new SinhVien(maSinhVien);
         xoaSinhVien(sv);
         show();
+        writeAndRead.write(danhSach);
     }
 
     public void kiemTraSinhVienCoTrongDanhSach() {
